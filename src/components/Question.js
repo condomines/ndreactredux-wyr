@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 class Question extends Component {
 
   render () {
-    console.log('props', this.props)
+    const { question, id } = this.props
+
     return (
-      <div>
-        {this.props.question.optionOne.text}
-      </div>
+      <Link to={`/question/${id}`}>
+        <div>
+          {question.optionOne.text}
+        </div>
+      </Link>
       )
   }
 }
