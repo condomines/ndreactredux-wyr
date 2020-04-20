@@ -1,11 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { getInitialData } from './utils/api.js'
 
 function App() {
+  getInitialData()
+    .then((info)=>console.log('Initial data', info))
+
   return (
     <div className="App">
       <header className="App-header">
+        <img src='avatars/affe.png' />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
