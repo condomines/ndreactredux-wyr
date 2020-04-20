@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { initData } from '../actions/initData'
 import LoadingBar from 'react-redux-loading'
+import Home from './Home'
 
 class App extends Component {
 
@@ -13,10 +14,25 @@ class App extends Component {
     return (
       <div>
         <LoadingBar />
-        My App
+        {this.props.isLoading
+          ? <div>Loading...</div>
+          :
+            <div>
+              <div>My Nav</div>
+              <div>User login</div>
+              <h3 className="center">My App</h3>
+              <Home />
+            </div>
+        }
       </div>
       )
   }
 }
 
-export default connect()(App)
+function mapStateToProp ({authedUser}) {
+  return {
+    isLoading: authedUser === null
+  }
+}
+
+export default connect(mapStateToProp)(App)
