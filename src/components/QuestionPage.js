@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleVoteQuestion } from '../actions/questions.js'
 import { Redirect } from 'react-router-dom'
+import Option, { OPTION_ONE, OPTION_TWO } from './Option'
 
 class QuestionPage extends Component {
   state = {
     votingOption: '',
-    toHome: false
   }
 
   handleChange = (event) => {
@@ -22,19 +22,26 @@ class QuestionPage extends Component {
     dispatch(handleVoteQuestion(id, votingOption))
     this.setState(()=>({
       votingOption: '',
-      toHome: true,
     }))
   }
 
   render () {
-    const { toHome } = this.state
+    const { id, question, author, answer } = this.props
 
-    if (toHome === true) {
-      return <Redirect to='/' />
+    if (answer) {
+      return (
+      <div className="result">
+        <h3 className="question-author">{author.name} ask:</h3>
+        <div className="question-result">
+          <img src={author.avatarURL} alt={`avatar of ${author.name}`}
+            className="avatar" />
+               <h3>Results: </h3>
+               <Option question={question} option={OPTION_ONE} answer={answer}/>
+               <Option question={question} option={OPTION_TWO} answer={answer}/>
+        </div>
+      </div>
+      )
     }
-
-    const { id, question, author } = this.props
-
     return (
       <div>
         <h3 className="question-author">{author.name} ask:</h3>
@@ -79,16 +86,20 @@ class QuestionPage extends Component {
   }
 }
 
-function mapStateToProps ({ users, questions}, props) {
+function mapStateToProps ({ users, questions, authedUser}, props) {
   const { id } = props.match.params
   const question = questions[id]
   const authorId = question.author
   const author = users[authorId]
+  const answer = (Object.keys(users[authedUser].answers).includes(id))
+    ? users[authedUser].answers[id]
+    : null
 
   return {
     id,
     question,
-    author
+    author,
+    answer
   }
 }
 

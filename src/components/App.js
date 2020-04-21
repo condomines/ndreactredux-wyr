@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { initData } from '../actions/initData'
 import LoadingBar from 'react-redux-loading'
+import Nav from './Nav'
+import Userbox from './Userbox'
 import Home from './Home'
 import Question from './Question'
 import QuestionPage from './QuestionPage'
@@ -22,8 +24,8 @@ class App extends Component {
             ? <div>Loading...</div>
             :
               <div>
-                <div>My Nav</div>
-                <div>User login</div>
+                <Nav />
+                <Userbox />
                 <h3 className="center">My App</h3>
                   <Route path='/' exact component={Home} />
                   <Route path='/question/:id' component={QuestionPage} />

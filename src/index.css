@@ -75,6 +75,12 @@ li {
   margin: 10px;
 }
 
+.avatar-userbox {
+  height: 35px;
+  border-radius: 25px;
+  margin: 2px;
+}
+
 .question {
   width: 100%;
   max-width: 590px;
@@ -99,6 +105,23 @@ li {
   margin: 10px;
   display: flex;
   flex-direction: column;
+}
+
+.result .question-author {
+  display: grid;
+}
+
+.question-result {
+ display: grid;
+  max-width: 590px;
+  padding: 10px;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+}
+
+.question-result h3, .question-result .option {
+border: 1px;
 }
 
 
