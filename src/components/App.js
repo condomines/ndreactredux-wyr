@@ -8,6 +8,7 @@ import Home from './Home'
 import Question from './Question'
 import QuestionPage from './QuestionPage'
 import NewQuestion from './NewQuestion'
+import LeaderBoard from './LeaderBoard'
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
                   <Route path='/' exact component={Home} />
                   <Route path='/question/:id' component={QuestionPage} />
                   <Route path='/add' component={NewQuestion} />
+                  <Route path='/leaderboard' component={LeaderBoard} />
               </div>
           }
         </div>
