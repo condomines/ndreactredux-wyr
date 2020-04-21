@@ -1,4 +1,4 @@
-import { RECEIVE_DATA, VOTE_QUESTION } from '../actions/questions'
+import { RECEIVE_DATA, VOTE_QUESTION, NEW_QUESTION } from '../actions/questions'
 
 export default function questions (prevState = {}, action) {
   switch(action.type) {
@@ -25,6 +25,11 @@ export default function questions (prevState = {}, action) {
         }
       // debugger
       return result
+    case NEW_QUESTION :
+      return {
+        ...prevState,
+        [action.question.id]: action.question
+      }
     default:
       return prevState
   }

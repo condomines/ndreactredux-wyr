@@ -1,8 +1,9 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
-import { saveQuestionAnswer } from '../utils/api.js'
+import { saveQuestionAnswer, saveQuestion } from '../utils/api.js'
 
 export const RECEIVE_DATA = 'RECEIVE_DATA'
 export const VOTE_QUESTION = 'VOTE_QUESTION'
+export const NEW_QUESTION = 'NEW_QUESTION'
 
 export function receiveQuestions (questions) {
   return ({
@@ -35,4 +36,26 @@ export function handleVoteQuestion (qid, answer) {
         )
       .finally(dispatch(hideLoading()))
   }
+}
+
+export function handleNewQuestion (optionOneText, optionTwoText) {
+  return (dispatch, getState) => {
+    // Need new id before updating the state, couldn't be optimistic
+    dispatch(showLoading())
+    const { authedUser } = getState()
+    const question = {author: authedUser, optionOneText, optionTwoText}
+
+    saveQuestion( question )
+      .then( (res) => {
+        dispatch(newQuestion(res))
+        dispatch(hideLoading())
+      })
+  }
+}
+
+function newQuestion (question) {
+  return ({
+    type: NEW_QUESTION,
+    question
+  })
 }
