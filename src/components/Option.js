@@ -10,6 +10,14 @@ export default function Option (props) {
   const optionVotes = question[option].votes.length
   const pctVotes = optionVotes / totalVotes
 
+// TODO: move this to an helper
+  const styleOption = {
+   style: 'percent',
+   maximumFractionDigits: 1
+  }
+  const numberFormat = new Intl.NumberFormat('en-US', styleOption)
+  const pctVotesFormatted = numberFormat.format(pctVotes)
+
   return (
     <div className='option'>
       <div className='option-title'>
@@ -18,7 +26,7 @@ export default function Option (props) {
 
       {(answer === option) && <span>This is your vote!</span>}
       <br/>
-      {pctVotes*100} %
+      {pctVotesFormatted}
       <br/>
       {optionVotes} out of {totalVotes}
     </div>
