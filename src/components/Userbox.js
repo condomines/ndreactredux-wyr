@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
-// TODO: link o navlink ???
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
 
 class Userbox extends Component {
+
+  handleClick = (e) => {
+    const { dispatch } = this.props
+    dispatch(setAuthedUser(null))
+  }
+
   render () {
     const { user } = this.props
 
@@ -15,9 +21,9 @@ class Userbox extends Component {
         Hello {user.name}
         <img src={user.avatarURL} alt={`Avatar of ${user.name}`}
           className='avatar-userbox' />
-        <NavLink to='/' exact activeClassName='active'>
+        <Link to='/' onClick={this.handleClick}>
           Logout
-        </NavLink>
+        </Link>
       </div>
       )
   }
@@ -27,6 +33,6 @@ function mapStateToProps ({ authedUser, users}) {
   return ({
     user: users[authedUser]
   })
-
 }
+
 export default connect(mapStateToProps)(Userbox)
