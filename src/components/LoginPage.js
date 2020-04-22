@@ -2,13 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import logo from '../logo.svg'
 import '../App.css';
-import { Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 
 class LoginPage extends Component {
   state = {
     user: '',
-    toHome: false
   }
 
   handleChange = (e) => {
@@ -21,13 +20,10 @@ class LoginPage extends Component {
     const { dispatch } = this.props
 
     dispatch(setAuthedUser(user))
-    this.setState({toHome: true, user: ''})
+    this.props.history.push(`/`)
   }
 
   render () {
-    if (this.state.toHome)
-      return <Redirect to='/' />
-
     return (
       <div className='container'>
         <div className='container-title'>
@@ -64,4 +60,4 @@ function mapStateToProps ({users}) {
   return {users: Object.values(users)}
 }
 
-export default connect(mapStateToProps)(LoginPage)
+export default withRouter(connect(mapStateToProps)(LoginPage))
