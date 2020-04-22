@@ -19,26 +19,22 @@ class App extends Component {
   render () {
     return (
       <Router>
-        <div>
-          <LoadingBar />
-          {this.props.isLoading
-            ? <div>Loading...</div>
-            :
-              <div>
-                <Nav />
-                <h3 className="center">My App</h3>
-                  {!this.props.isLoggedIn
-                    ? <LoginPage />
-                    : <Fragment>
-                        <Route path='/' exact component={Home} />
-                        <Route path='/question/:id' component={QuestionPage} />
-                        <Route path='/add' component={NewQuestion} />
-                        <Route path='/leaderboard' component={LeaderBoard} />
-                      </Fragment>
-                  }
-              </div>
-          }
-        </div>
+        <LoadingBar />
+        {this.props.isLoading
+          ? <div>Loading...</div>
+          : <div>
+              <Nav />
+              {!this.props.isLoggedIn
+                ? <LoginPage />
+                : <Fragment>
+                    <Route path='/' exact component={Home} />
+                    <Route path='/question/:id' component={QuestionPage} />
+                    <Route path='/add' component={NewQuestion} />
+                    <Route path='/leaderboard' component={LeaderBoard} />
+                  </Fragment>
+              }
+            </div>
+        }
       </Router>
       )
   }
