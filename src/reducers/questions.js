@@ -1,6 +1,6 @@
 import { RECEIVE_DATA, VOTE_QUESTION, NEW_QUESTION } from '../actions/questions'
 
-export default function questions (prevState = {}, action) {
+export default function questions (prevState = null, action) {
   switch(action.type) {
     case  RECEIVE_DATA :
       return {...prevState, ...action.questions}

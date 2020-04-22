@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleVoteQuestion } from '../actions/questions.js'
-import { Redirect } from 'react-router-dom'
 import Option, { OPTION_ONE, OPTION_TWO } from './Option'
 
 class QuestionPage extends Component {
@@ -26,7 +25,7 @@ class QuestionPage extends Component {
   }
 
   render () {
-    const { id, question, author, answer } = this.props
+    const { question, author, answer } = this.props
 
     if (answer) {
       return (

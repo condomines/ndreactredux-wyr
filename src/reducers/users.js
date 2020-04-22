@@ -2,7 +2,7 @@ import { RECEIVE_DATA } from '../actions/users'
 // TODO: the action definition should be in a shared file??
 import { VOTE_QUESTION, NEW_QUESTION } from '../actions/questions'
 
-export function users (prevState = {}, action) {
+export function users (prevState = null, action) {
   switch(action.type) {
     case  RECEIVE_DATA :
       return {...prevState, ...action.users}
