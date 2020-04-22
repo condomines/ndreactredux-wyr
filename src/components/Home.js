@@ -3,28 +3,44 @@ import Question from './Question'
 import { connect } from 'react-redux'
 
 class Home extends Component {
+  state = {
+    showPending: true
+  }
+
+  showPending(show) {
+   this.setState((state)=>({showPending: show}))
+  }
 
   render () {
     const { questionsPending, questionsDone } = this.props
 
     return (
       <div>
-        <h3>Pending questions</h3>
-        <ul>
-          {questionsPending.length > 0 && questionsPending.map( (question) => (
-          <li key={question[0]}>
-            <Question id={question[0]} />
-          </li>
-          ))}
-        </ul>
-        <h3>Answered questions</h3>
-        <ul>
-          {questionsDone.length > 0 && questionsDone.map( (question) => (
-          <li key={question[0]}>
-            <Question id={question[0]} />
-          </li>
-          ))}
-        </ul>
+        <h3 className={this.state.showPending ? 'selected' : null}
+            onClick={() => this.showPending(true)}>Pending questions</h3>
+        <h3 className={!this.state.showPending ? 'selected' : ''}
+            onClick={() => this.showPending(false)}>Answered questions</h3>
+
+        {this.state.showPending === true
+          ? <div class='questions-list'>
+              <ul>
+                {questionsPending.length > 0 && questionsPending.map( (question) => (
+                <li key={question[0]}>
+                  <Question id={question[0]} />
+                </li>
+                ))}
+              </ul>
+            </div>
+        : <div class='questions-list'>
+            <ul>
+              {questionsDone.length > 0 && questionsDone.map( (question) => (
+              <li key={question[0]}>
+                <Question id={question[0]} />
+              </li>
+              ))}
+            </ul>
+          </div>
+        }
       </div>
     )
   }
