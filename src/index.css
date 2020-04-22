@@ -150,3 +150,7 @@ h3.selected {
   padding: 0px 10px;
 }
 
+.main {
+  margin: 5px;
+  border: 1px solid gray;
+}

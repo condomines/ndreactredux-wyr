@@ -13,16 +13,16 @@ import { BrowserRouter as Router, Route} from 'react-router-dom'
 class App extends Component {
 
   componentDidMount () {
-    console.log('mounted')
     this.props.dispatch(initData())
   }
+
   render () {
     return (
       <Router>
         <LoadingBar />
         {this.props.isLoading
           ? <div>Loading...</div>
-          : <div>
+          : <div className='main'>
               <Nav />
               {!this.props.isLoggedIn
                 ? <LoginPage />

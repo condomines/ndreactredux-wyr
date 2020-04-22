@@ -11,55 +11,62 @@ class Home extends Component {
    this.setState((state)=>({showPending: show}))
   }
 
+  questionList = (questions) => (
+    <div className='questions-list'>
+      <ul>
+        {questions.length > 0 && questions.map( (question) => (
+        <li key={question}>
+          <Question id={question} />
+        </li>
+        ))}
+      </ul>
+    </div>
+  )
+
   render () {
     const { questionsPending, questionsDone } = this.props
+    const { showPending } = this.state
 
     return (
       <div>
-        <h3 className={this.state.showPending ? 'selected' : null}
+        <h3 className={showPending ? 'selected' : null}
             onClick={() => this.showPending(true)}>Unanswered questions</h3>
-        <h3 className={!this.state.showPending ? 'selected' : ''}
+        <h3 className={!showPending ? 'selected' : ''}
             onClick={() => this.showPending(false)}>Answered questions</h3>
 
-        {this.state.showPending === true
-          ? <div className='questions-list'>
-              <ul>
-                {questionsPending.length > 0 && questionsPending.map( (question) => (
-                <li key={question[0]}>
-                  <Question id={question[0]} />
-                </li>
-                ))}
-              </ul>
-            </div>
-        : <div className='questions-list'>
-            <ul>
-              {questionsDone.length > 0 && questionsDone.map( (question) => (
-              <li key={question[0]}>
-                <Question id={question[0]} />
-              </li>
-              ))}
-            </ul>
-          </div>
+        {showPending === true
+          ? this.questionList(questionsPending)
+          : this.questionList(questionsDone)
         }
       </div>
     )
   }
 }
 
-function mapStateToProp ({questions, authedUser, users}) {
-  const sortedQuestions = Object.entries(questions)
+// From a questions object to a sorted array of entries
+const sortQuestions = (questions) => (
+  Object.entries(questions)
     .sort((a,b)=>questions[b[0]].timestamp - questions[a[0]].timestamp)
+)
 
-  const questionsPending = sortedQuestions
-    .filter((elem) => (
-      !Object.keys(users[authedUser].answers).includes(elem[1].id)))
+// From entries to a filtered array of ids
+const filterAnswered = (questions, answersIds, answered = true) => (
+  questions.filter((elem) => (
+    answered
+      ? answersIds.includes(elem[1].id)
+      : !answersIds.includes(elem[1].id)
+  )).map((e)=>e[0])
+)
 
-  const questionsDone = sortedQuestions
-    .filter((elem) => (
-      Object.keys(users[authedUser].answers).includes(elem[1].id)))
+function mapStateToProp ({questions, authedUser, users}) {
+
+  const sortedQuestions = sortQuestions(questions)
+  const answersIds = Object.keys(users[authedUser].answers)
+
+  const questionsPending = filterAnswered(sortedQuestions, answersIds, false)
+  const questionsDone = filterAnswered(sortedQuestions, answersIds, true)
 
   return {
-    questionsIds: Object.keys(questions),
     questionsPending: questionsPending,
     questionsDone: questionsDone
   }
