@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { initData } from '../actions/initData'
 import LoadingBar from 'react-redux-loading'
 import Nav from './Nav'
-import Userbox from './Userbox'
 import Home from './Home'
 import QuestionPage from './QuestionPage'
 import NewQuestion from './NewQuestion'
@@ -27,7 +26,6 @@ class App extends Component {
             :
               <div>
                 <Nav />
-                <Userbox />
                 <h3 className="center">My App</h3>
                   {!this.props.isLoggedIn
                     ? <LoginPage />

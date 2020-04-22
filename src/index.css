@@ -133,3 +133,20 @@ h3 {
 h3.selected {
   text-decoration: underline;
 }
+
+.header {
+  padding: 10px 60px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid green;
+}
+
+.userbox {
+  display: flex;
+  align-items: center;
+}
+
+.userbox > * {
+  padding: 0px 10px;
+}
+
