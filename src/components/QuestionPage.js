@@ -27,6 +27,9 @@ class QuestionPage extends Component {
   render () {
     const { question, author, answer } = this.props
 
+    if (question === null)
+      return <h3>404 - Not found - This poll doesn't exist</h3>
+
     if (answer) {
       return (
       <div className="result">
@@ -87,9 +90,8 @@ class QuestionPage extends Component {
 
 function mapStateToProps ({ users, questions, authedUser}, props) {
   const { id } = props.match.params
-  const question = questions[id]
-  const authorId = question.author
-  const author = users[authorId]
+  const question = questions[id] ? questions[id] : null
+  const author = question ? users[question.author] : null
   const answer = (Object.keys(users[authedUser].answers).includes(id))
     ? users[authedUser].answers[id]
     : null

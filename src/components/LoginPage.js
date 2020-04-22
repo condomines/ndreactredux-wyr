@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import logo from '../logo.svg'
 import '../App.css';
-import { withRouter } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 
 class LoginPage extends Component {
@@ -20,7 +19,6 @@ class LoginPage extends Component {
     const { dispatch } = this.props
 
     dispatch(setAuthedUser(user))
-    this.props.history.push(`/`)
   }
 
   render () {
@@ -60,4 +58,4 @@ function mapStateToProps ({users}) {
   return {users: Object.values(users)}
 }
 
-export default withRouter(connect(mapStateToProps)(LoginPage))
+export default connect(mapStateToProps)(LoginPage)
