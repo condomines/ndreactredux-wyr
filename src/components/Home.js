@@ -28,12 +28,13 @@ class Home extends Component {
     const { showPending } = this.state
 
     return (
-      <div>
+      <div className='container'>
+      <div className='container-title'>
         <h3 className={showPending ? 'selected' : null}
             onClick={() => this.showPending(true)}>Unanswered questions</h3>
         <h3 className={!showPending ? 'selected' : ''}
             onClick={() => this.showPending(false)}>Answered questions</h3>
-
+      </div>
         {showPending === true
           ? this.questionList(questionsPending)
           : this.questionList(questionsDone)
