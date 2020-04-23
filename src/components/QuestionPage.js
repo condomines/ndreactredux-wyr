@@ -37,9 +37,11 @@ class QuestionPage extends Component {
         <div className="question-result">
           <img src={author.avatarURL} alt={`avatar of ${author.name}`}
             className="avatar" />
-               <h3>Results: </h3>
+            <div className='result-content'>
+               <b>Results: </b>
                <Option question={question} option={OPTION_ONE} answer={answer}/>
                <Option question={question} option={OPTION_TWO} answer={answer}/>
+            </div>
         </div>
       </div>
       )
@@ -51,7 +53,7 @@ class QuestionPage extends Component {
           <img src={author.avatarURL} alt={`avatar of ${author.name}`}
             className="avatar" />
           <form className="question-info" onSubmit={this.handleSubmit}>
-               <h3>Would you rather...</h3>
+               <b>Would you rather...</b>
                <label>
                  <input
                     type="radio"

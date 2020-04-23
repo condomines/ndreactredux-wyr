@@ -106,6 +106,11 @@ li {
   margin: 10px;
   display: flex;
   flex-direction: column;
+
+}
+
+.question-info input {
+  margin: 10px;
 }
 
 .result .question-author {
@@ -121,7 +126,7 @@ li {
   border-radius: 3px;
 }
 
-.question-result h3, .question-result .option {
+.question-result h3 {
 border: 1px;
 }
 
@@ -197,3 +202,25 @@ h3.selected {
   margin: 5px;
   border: 1px solid green;
 }
+
+.question-result {
+  display: flex;
+}
+
+.result-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  border: 3px solid green;
+  border-radius: 3px;
+  margin: 5px;
+  padding: 10px;
+  align-content: center;
+}
+
+.pct-votes, .number-votes {
+  text-align: center;
+}
+

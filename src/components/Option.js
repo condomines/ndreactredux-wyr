@@ -18,17 +18,23 @@ export default function Option (props) {
   const numberFormat = new Intl.NumberFormat('en-US', styleOption)
   const pctVotesFormatted = numberFormat.format(pctVotes)
 
+  const votedStyle = (answer === option) ? {
+    backgroundColor: 'lightgreen'
+  } : null
+
   return (
-    <div className='option'>
+    <div className='option' style={votedStyle}>
       <div className='option-title'>
         Would you rather {question[option].text}?
       </div>
 
       {(answer === option) && <span>This is your vote!</span>}
-      <br/>
-      {pctVotesFormatted}
-      <br/>
-      {optionVotes} out of {totalVotes}
+      <div className='pct-votes'>
+        {pctVotesFormatted}
+      </div>
+      <div className='number-votes'>
+        {optionVotes} out of {totalVotes}
+      </div>
     </div>
   )
 }
