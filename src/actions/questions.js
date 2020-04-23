@@ -1,4 +1,4 @@
-import { showLoading, hideLoading } from 'react-redux-loading'
+import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import { saveQuestionAnswer, saveQuestion } from '../utils/api.js'
 
 export const RECEIVE_DATA = 'RECEIVE_DATA'
