@@ -39,6 +39,10 @@ class NewQuestion extends Component {
       return <Redirect to='/' />
     }
 
+    const { optionOne, optionTwo } = this.state
+    const disabled = (optionOne === '' || optionTwo === '')
+    console.log('disabled: ', disabled)
+
     return (
       <div className='container newquestion-container'>
             <div className='container-title'>
@@ -54,21 +58,22 @@ class NewQuestion extends Component {
             <input type='textarea'
               name='optionOne'
               className='text-area'
-              value={this.state.optionOne}
+              value={optionOne}
               onChange={this.handleChange}
-              placeHolder='Enter option one text here'
+              placeholder='Enter option one text here'
               />
             <div className='separator'>OR</div>
             <input type='textarea'
               name='optionTwo'
               className='text-area'
-              value={this.state.optionTwo}
+              value={optionTwo}
               onChange={this.handleChange}
-              placeHolder='Enter option two text here'
+              placeholder='Enter option two text here'
               />
             <button type='submit'
-              className='btn newquestion-btn'>
-              submit
+              className='btn newquestion-btn'
+              disabled={disabled}>
+              Submit
             </button>
           </form>
         </div>
