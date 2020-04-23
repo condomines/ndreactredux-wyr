@@ -8,8 +8,8 @@ class LeaderBoard extends Component {
       <div className='container'>
         <ul>
           {this.props.users.map((user)=>(
-            <li key={user[1].id}>
-              <User user={user[1]} />
+            <li key={user.id}>
+              <User user={user} />
             </li>
           ))}
         </ul>
@@ -23,9 +23,7 @@ const score = (user) => (
 
 function mapStateToProp ({ users }) {
   return ({
-    users: Object.entries(users).sort((a,b)=>(
-    score(users[b[0]]) - score(users[a[0]])
-    ))
+    users: Object.values(users).sort((a,b)=>(score(b) - score(a)))
   })
 }
 
