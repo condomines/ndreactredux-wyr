@@ -14,7 +14,7 @@ export function initData () {
         ({questions, users}) => {
           dispatch(receiveUsers(users))
           dispatch(receiveQuestions(questions))
-          dispatch(setAuthedUser('johndoe'))
+          //dispatch(setAuthedUser('johndoe'))
           dispatch(hideLoading())
         })
   }

@@ -24,9 +24,9 @@ class LoginPage extends Component {
   render () {
     return (
       <div className='container'>
-        <div className='container-title'>
+        <div className='login-title'>
           <h1>Welcome to the would you rather app!</h1>
-          Please sign in to continue
+          <br/>Please sign in to continue
         </div>
         <div className='container-content'>
           <img src={logo} className="App-logo" alt="logo" />
@@ -43,7 +43,7 @@ class LoginPage extends Component {
               ))}
               }
             </select>
-            <button type='submit' className='btn'
+            <button type='submit' className='btn login-btn'
               disabled={ this.state.user === '' }>
               Sign in
             </button>
