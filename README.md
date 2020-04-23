@@ -72,6 +72,7 @@ yarn build
 
 * [React](https://reactjs.org/) - A JavaScript library for building user interfaces
 * [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps
+* [Create React App](https://github.com/facebook/create-react-app) - Create React apps with no build configuration.
 
 ## Contributing
 
@@ -85,6 +86,7 @@ We would use [SemVer](http://semver.org/) for versioning.
 
 * **Chris C** - *Initial work* - [ND React](https://www.udacity.com/course/react-nanodegree--nd019)
 * **Tyler M** - *Using his images* - [tylermcginnis.com](https://tylermcginnis.com/)
+* **Udacity** - *Using _DATA.js* - [Starter repo](https://github.com/udacity/reactnd-project-would-you-rather-starter)
 
 ## License
 
