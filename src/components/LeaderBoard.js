@@ -7,7 +7,7 @@ class LeaderBoard extends Component {
     return (
       <div className='container'>
         <ul>
-          {this.props.users.map((user)=>(
+          {this.props.users.map((user) => (
             <li key={user.id}>
               <User user={user} />
             </li>

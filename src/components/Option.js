@@ -10,7 +10,6 @@ export default function Option (props) {
   const optionVotes = question[option].votes.length
   const pctVotes = optionVotes / totalVotes
 
-// TODO: move this to an helper
   const styleOption = {
    style: 'percent',
    maximumFractionDigits: 1

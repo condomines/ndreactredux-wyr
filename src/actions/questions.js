@@ -26,7 +26,7 @@ export function handleVoteQuestion (qid, answer) {
     // No way to revert the change, so no optimistic UI update
     const { authedUser } = getState()
     dispatch(showLoading())
-    console.log('calling save api: ',{authedUser, qid, answer} )
+
     saveQuestionAnswer({authedUser, qid, answer})
       .then(
           dispatch(voteQuestion(authedUser, qid, answer))

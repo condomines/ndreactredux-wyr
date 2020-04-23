@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Question from './Question'
 import { connect } from 'react-redux'
+import Question from './Question'
 
 class Home extends Component {
   state = {

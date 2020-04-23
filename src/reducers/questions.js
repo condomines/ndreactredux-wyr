@@ -4,6 +4,7 @@ export default function questions (prevState = null, action) {
   switch(action.type) {
     case  RECEIVE_DATA :
       return {...prevState, ...action.questions}
+
     case VOTE_QUESTION :
       const { authedUser, qid, answer } = action
       const question = prevState[qid]
@@ -23,13 +24,14 @@ export default function questions (prevState = null, action) {
           [answer]: {...question[answer], votes: newVotes}
           }
         }
-      // debugger
       return result
+
     case NEW_QUESTION :
       return {
         ...prevState,
         [action.question.id]: action.question
       }
+
     default:
       return prevState
   }

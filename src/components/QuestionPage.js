@@ -24,6 +24,20 @@ class QuestionPage extends Component {
     }))
   }
 
+  optionInput = (option) => (
+    <label>
+      <input
+        type="radio"
+        name="votingOption"
+        value={option}
+        onChange={this.handleChange}
+        selected={this.state.votingOption === {option}
+                    ? "selected"
+                    : ""}/>
+      {this.props.question[option].text}
+    </label>
+  )
+
   render () {
     const { question, author, answer } = this.props
 
@@ -37,15 +51,16 @@ class QuestionPage extends Component {
         <div className="question-result">
           <img src={author.avatarURL} alt={`avatar of ${author.name}`}
             className="avatar" />
-            <div className='result-content'>
-               <b>Results: </b>
-               <Option question={question} option={OPTION_ONE} answer={answer}/>
-               <Option question={question} option={OPTION_TWO} answer={answer}/>
-            </div>
+          <div className='result-content'>
+             <b>Results: </b>
+             <Option question={question} option={OPTION_ONE} answer={answer}/>
+             <Option question={question} option={OPTION_TWO} answer={answer}/>
+          </div>
         </div>
       </div>
       )
     }
+
     return (
       <div>
         <h3 className="question-author">{author.name} ask:</h3>
@@ -53,29 +68,9 @@ class QuestionPage extends Component {
           <img src={author.avatarURL} alt={`avatar of ${author.name}`}
             className="avatar" />
           <form className="question-info" onSubmit={this.handleSubmit}>
-               <b>Would you rather...</b>
-               <label>
-                 <input
-                    type="radio"
-                    name="votingOption"
-                    value="optionOne"
-                    onChange={this.handleChange}
-                    selected={this.state.votingOption === "optionOne"
-                                ? "selected"
-                                : ""}/>
-                  {question.optionOne.text}
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="votingOption"
-                    value="optionTwo"
-                    onChange={this.handleChange}
-                    selected={this.state.votingOption === "optionTwo"
-                                ? "selected"
-                                : ""}/>
-                  {question.optionTwo.text}
-                </label>
+            <b>Would you rather...</b>
+            {this.optionInput(OPTION_ONE)}
+            {this.optionInput(OPTION_TWO)}
             <button
                 className='btn'
                 type='submit'

@@ -14,7 +14,6 @@ export function saveQuestion (question) {
 
 export function getInitialData () {
   return Promise.all( [_getQuestions (), _getUsers ()] )
-    .then( ([questions, users],rej) => ({questions, users}))
+    .then( ([questions, users]) => ({questions, users}))
 }
-// TODO: check rej or catch error
 
