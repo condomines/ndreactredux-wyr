@@ -41,7 +41,6 @@ class NewQuestion extends Component {
 
     const { optionOne, optionTwo } = this.state
     const disabled = (optionOne === '' || optionTwo === '')
-    console.log('disabled: ', disabled)
 
     return (
       <div className='container newquestion-container'>
