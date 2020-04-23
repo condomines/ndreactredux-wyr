@@ -1,68 +1,95 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ND - Would you rather... app
 
-## Available Scripts
+This is a project for the React & Redux part of the the React Nanodegree program.
+This app allows to answer to polls, each one with two options. You can also create
+new poll, view the results, view the ranking by users.
 
-In the project directory, you can run:
+## Getting Started
 
-### `yarn start`
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Prerequisites
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+You need to have node installed in your workstation.
+You can get it here: https://nodejs.org/
 
-### `yarn test`
+If you're workign on osx with homebrew, just run:
+```
+brew install node
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installing
 
-### `yarn build`
+The installation is straightforward:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+git checkout
+cd
+yarn install
+yarn start
+```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+If you want ot use npm instead of yarn, the same steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+git checkout
+cd
+npm install
+npm start
+```
 
-### `yarn eject`
+## Running the tests
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The test should be run with yarn/npm test
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Break down into end to end tests
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Up to now, there isn't any test implemented.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+yarn test
+```
 
-## Learn More
+### And coding style tests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+No coding style tests, just the linter coming from create-react-app.
+For coding style, we follow the udacity guides:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+https://udacity.github.io/git-styleguide/
+```
 
-### Code Splitting
+## Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+If you want to deploy this app in production, just build it before and
+serve it with an http server.
 
-### Analyzing the Bundle Size
+```
+yarn build
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+## Built With
 
-### Making a Progressive Web App
+* [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+* [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Contributing
 
-### Advanced Configuration
+As this is a ND project, no pull requests will be accepted for this repo.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Versioning
 
-### Deployment
+We would use [SemVer](http://semver.org/) for versioning.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Authors
 
-### `yarn build` fails to minify
+* **Chris C** - *Initial work* - [ND React](https://www.udacity.com/course/react-nanodegree--nd019)
+* **Tyler M** - *Using his images* - [tylermcginnis.com](https://tylermcginnis.com/)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Thanks to Tyler Mcginnis for the course.
