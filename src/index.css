@@ -290,3 +290,22 @@ h3.selected {
 .login-btn {
   margin: 10px;
 }
+
+.newquestion-container .container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.newquestion-container input {
+  width: 100%;
+  margin: 10px 0px;
+  font-size: 1.3em;
+}
+.newquestion-btn {
+  display: block;
+}
+
+.separator {
+  text-align: center;
+}

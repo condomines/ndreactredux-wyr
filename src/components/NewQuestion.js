@@ -40,10 +40,15 @@ class NewQuestion extends Component {
     }
 
     return (
-      <div className='container'>
+      <div className='container newquestion-container'>
+            <div className='container-title'>
+
         <h3>Create new question</h3>
+        </div>
         <div className='container'>
           Complete the question
+          <br/>
+          <br/>
           <b>Would you rather...</b>
           <form onSubmit={this.handleSubmit}>
             <input type='textarea'
@@ -51,6 +56,7 @@ class NewQuestion extends Component {
               className='text-area'
               value={this.state.optionOne}
               onChange={this.handleChange}
+              placeHolder='Enter option one text here'
               />
             <div className='separator'>OR</div>
             <input type='textarea'
@@ -58,9 +64,10 @@ class NewQuestion extends Component {
               className='text-area'
               value={this.state.optionTwo}
               onChange={this.handleChange}
+              placeHolder='Enter option two text here'
               />
             <button type='submit'
-              className='btn'>
+              className='btn newquestion-btn'>
               submit
             </button>
           </form>
